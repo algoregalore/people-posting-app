@@ -1,2 +1,8 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<!-- username -->
+<h1><%= @user.username %>'s profile</h1>
+
+<!-- show tweets -->
+
+<% @user.tweets.each do |tweet| %>
+  <%= tweet.message %> <br>
+<% end %>
