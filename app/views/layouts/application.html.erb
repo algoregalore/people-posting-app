@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <!-- login/out button -->
+    <%= link_to 'logout', destroy_user_session_path, method: :delete, class: 'btn btn-xs btn-default' %>
     <%= yield %>
   </body>
 </html>
