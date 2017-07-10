@@ -26,6 +26,8 @@ class TweetsController < ApplicationController
   end
 
   def show
+    # setup to show latest tweet from user
+    @tweet = Tweet.find(params[:id])
   end
 
   private
