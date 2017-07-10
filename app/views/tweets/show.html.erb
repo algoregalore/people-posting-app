@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<!-- tweet -->
+
+  <!-- username -->
+  <p>
+    <strong>user: </strong><%= @tweet.user.username %>
+  </p>
+
+  <!-- message -->
+  <p>
+    <strong>message: </strong><%= @tweet.message %>
+  </p>
+
+  <!-- created at what time -->
+  <p>
+    <strong>tweeted at: </strong><%= @tweet.created_at %>
+  </p>
+
+<!-- button to edit -->
+<%= link_to 'edit', edit_tweet_path(@tweet), class: 'btn btn-sm btn-default' %>
+
+<!-- go back to index -->
+<%= link_to 'back to feed', tweets_path, class: 'btn btn-sm btn-default' %>
