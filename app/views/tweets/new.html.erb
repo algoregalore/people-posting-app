@@ -1,2 +1,42 @@
-<h1>Tweets#new</h1>
-<p>Find me in app/views/tweets/new.html.erb</p>
+<h1>new tweet</h1>
+
+<!-- form - f is block variable for forms -->
+<%= form_for(@tweet) do |f| %>
+<!-- show any errors -->
+<% if @tweet.errors.any? %>
+  <div id="error_explaination">
+    <h2>
+      <%= pluralize(@tweet.errors.count, 'error') %> prohibited this tweet from being saved:
+    </h2>
+    <!-- interate thru errors -->
+    <ul>
+      <% @tweet.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- actual form -->
+
+  <!-- message field -->
+  <div class="field form-group">
+    <%= f.label :message %> <br>
+    <%= f.text_field :message, class: 'form-control' %>
+  </div>
+
+  <!-- user id field - current user id sets the id for user -->
+  <div class="field form-group">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <!-- submit button -->
+  <div class="actions form-group">
+    <%= f.submit class: 'btn btn-sm btn-default' %>
+  </div>
+
+<% end %>
+
+<!-- back to index -->
+
+<%= link_to 'back to feed', tweets_path, class: 'btn btn-sm btn-default' %>
