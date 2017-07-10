@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tweet, only: [:edit, :show, :update]
+  before_action :set_tweet, only: [:edit, :show, :update, :destroy]
 
 
   def index
@@ -46,6 +46,16 @@ class TweetsController < ApplicationController
   def show
     # setup to show latest tweet from user
     # before action gets tweet we wanna show
+  end
+
+  def destroy
+    # get the tweet (before action gets tweet)
+    # destroy the tweet
+    @tweet.destroy
+    # re render index view
+    respond_to do |format|
+      format.html {redirect_to tweets_url, notice: 'tweet deleted succuessfully'}
+    end
   end
 
   private
