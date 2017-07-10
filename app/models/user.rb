@@ -5,7 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :tweets
+
+# user validations
+# require name and username
+
+# name has to be unique
+validates :name, presence: true
+validates :username, presence: true, uniqueness: true
+
 end
+
 
 # == Schema Information
 #
