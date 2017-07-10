@@ -1,4 +1,32 @@
-<h1>Tweets#index</h1>
-<p>Find me in app/views/tweets/index.html.erb</p>
+<p id="notice"><%= notice %></p>
 
-<%= @tweets.inspect %>
+<!-- make a new tweet -->
+<%= link_to 'new tweet', new_tweet_path, class: 'btn btn-md btn-success' %>
+
+<!-- see all tweets in a table -->
+<table class="table table-striped table-hover">
+<!-- head -->
+  <thead>
+    <tr>
+      <th>message</th>
+      <th>username</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<!-- body -->
+  <tbody>
+  <!-- iterate through the tweets each one in a new row -->
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.message %></td>
+        <td><%= tweet.user.username %></td>
+        <td><%= link_to 'show', tweet %></td>
+        <td><%= link_to 'edit', edit_tweet_path(tweet) %></td>
+        <td><%= link_to 'destroy', tweet, method: :delete, data: {confirm: 'u sure???'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+
